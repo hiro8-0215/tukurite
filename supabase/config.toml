@@ -1,0 +1,9 @@
+project_id = "lcgpgyncmdsidgbtpjoy"
+[functions.api]
+verify_jwt = false
+[functions.import-recipe]
+verify_jwt = false
+[functions.register-with-id]
+verify_jwt = false
+[functions.community]
+verify_jwt = false

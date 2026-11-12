@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "つくりて",
+    "slug": "tsukurite",
+    "owner": "oo0-hiro-0oos-team",
+    "web": {
+      "output": "single"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f06d20c4-9627-4cbe-baa3-76d165de05eb"
+      }
+    }
+  }
+}

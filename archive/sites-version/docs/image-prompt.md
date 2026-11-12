@@ -1,0 +1,6 @@
+# Generated food asset
+
+Built-in ImageGen tool used. Saved project asset: public/food-grid.png. No external recipe photographs were copied into the app.
+
+## Prompt
+Create ONE photoreal editorial contact sheet image for a Japanese cooking recipe social app. Exact layout: three equal columns and two equal rows, 6 edge-to-edge panels with NO gaps NO borders NO text. Each panel has the same warm cream tabletop, soft daylight, overhead flat-lay composition, tactile handmade off-white ceramics, appetizing realistic food, calm contemporary Japanese lifestyle magazine photography. Top left: tomato-braised golden chicken pieces with cherry tomatoes and basil in a shallow bowl. Top middle: cooked salmon and rice bowl with green edamame and sesame. Top right: lemon broccoli spaghetti with olive oil on a plate. Bottom left: glazed miso eggplant with sesame and scallions. Bottom middle: three triangular Japanese onigiri rice balls with nori on a ceramic plate. Bottom right: vivid pumpkin soup in a bowl with cream swirl and pumpkin seeds. Keep each entire dish centered in its own equal panel, overhead, clean light cream/beige palette with natural food colors. The panel grid will be used as a single CSS sprite image, so precisely aligned equal halves and thirds matter. Landscape image 3:2 aspect ratio. No people no hands no logos no lettering no watermarks.

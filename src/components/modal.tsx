@@ -1,0 +1,10 @@
+'use client';
+import {useEffect,useRef,type ReactNode} from 'react';
+import {createPortal} from 'react-dom';
+import {X} from 'lucide-react';
+let openCount=0,priorOverflow='';
+export function Modal({title,children,wide=false,onClose,busy=false}:{title:string;children:ReactNode;wide?:boolean;onClose:()=>void;busy?:boolean}){
+ const root=useRef<HTMLDivElement>(null);
+ useEffect(()=>{if(openCount++===0){priorOverflow=document.body.style.overflow;document.body.style.overflow='hidden';}const previous=document.activeElement as HTMLElement|null;const siblings=Array.from(root.current?.parentElement?.children||[]).filter((el):el is HTMLElement=>el instanceof HTMLElement&&el!==root.current&&!el.hasAttribute('data-modal-exempt'));const prior=siblings.map(el=>el.inert);siblings.forEach(el=>{el.inert=true;});root.current?.focus();return()=>{if(--openCount===0)document.body.style.overflow=priorOverflow;siblings.forEach((el,i)=>{el.inert=prior[i];});if(previous?.isConnected)previous.focus({preventScroll:true});};},[]);
+ return createPortal(<div ref={root} tabIndex={-1} className="modal-backdrop" onKeyDown={e=>{if(e.key==='Escape'&&!busy){e.preventDefault();onClose();}if(e.key==='Tab'){const controls=Array.from(root.current?.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),textarea:not(:disabled),select:not(:disabled),a[href],summary')||[]).filter(x=>x.offsetParent!==null);const first=controls[0],last=controls[controls.length-1];if(!first){e.preventDefault();return;}if(e.shiftKey&&(document.activeElement===first||document.activeElement===root.current)){e.preventDefault();last.focus();}else if(!e.shiftKey&&(document.activeElement===last||document.activeElement===root.current)){e.preventDefault();first.focus();}}}} onMouseDown={e=>{if(e.target===e.currentTarget&&!busy)onClose();}}><section role="dialog" aria-modal="true" aria-busy={busy} aria-label={title} className={'modal '+(wide?'wide':'')}><div className="modal-header"><span>{title}</span><button className="icon-button" disabled={busy} onClick={onClose} aria-label="閉じる"><X size={21}/></button></div>{children}</section></div>,document.body);
+}

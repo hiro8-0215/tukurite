@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1792663347528,
+      "tag": "0000_flippant_lifeguard",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792665057524,
+      "tag": "0001_glossy_dakota_north",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792665792812,
+      "tag": "0002_fresh_northstar",
+      "breakpoints": true
+    }
+  ]
+}

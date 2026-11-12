@@ -1,0 +1,15 @@
+node_modules/
+/dist/
+.env*
+!.env.example
+.expo/
+*.tar.gz
+supabase/.temp/
+
+hosting/
+
+# Local deployment credentials and build state
+.next/
+.wrangler/
+.sites-runtime/
+*.log

@@ -1,0 +1,7 @@
+import {useEffect,useRef} from 'react';
+export type RecipeDraft={title:string;description:string;ingredients:string;steps:string;servings:number;minutes:number;category:string};
+export type RecipeSuggestion={draft:RecipeDraft;warnings:string[];mode:'compose'|'refine';source?:'input_cleanup'};
+export function RecipeSuggestionReview({suggestion,onApply,onDiscard}:{suggestion:RecipeSuggestion;onApply:()=>void;onDiscard:()=>void}){
+ const root=useRef<HTMLElement>(null);useEffect(()=>{root.current?.focus({preventScroll:true});root.current?.scrollIntoView({behavior:'smooth',block:'nearest'});},[suggestion]);
+ return <section ref={root} tabIndex={-1} className="recipe-ai-review" aria-label={suggestion.source==='input_cleanup'?'入力の表記整理の案':'AIのレシピ案'}><p className="eyebrow">{suggestion.source==='input_cleanup'?'入力の表記整理（AI未使用）':suggestion.mode==='compose'?'こだわりを反映したレシピ案':'材料・分量・作り方の仕上げ案'}</p><h3>{suggestion.draft.title}</h3><p>{suggestion.draft.servings}人分。反映するまで入力内容は変わりません。</p><h4>材料・分量</h4><p className="pre-line">{suggestion.draft.ingredients}</p><h4>作り方</h4><ol>{suggestion.draft.steps.split('\n').map((step,i)=><li key={i}>{step}</li>)}</ol>{suggestion.warnings.length>0&&<div className="recipe-ai-notes"><b>確認ポイント</b><ul>{suggestion.warnings.map((w,i)=><li key={i}>{w}</li>)}</ul></div>}<div className="recipe-ai-actions"><button type="button" className="primary" onClick={onApply}>この案を反映する</button><button type="button" className="secondary" onClick={onDiscard}>反映せず閉じる</button></div></section>;
+}
